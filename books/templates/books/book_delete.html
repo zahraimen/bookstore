@@ -4,12 +4,41 @@
 {% endblock %}
 
 {% block content %}
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-        <h1>حذف کتاب "{{ book.title }}"</h1>
-        <p>آیا از حذف "{{ book.title }}" مطمین هستید؟</p>
-        <button type="submit" class="btn btn-danger"> بله</button>
-    </form>
+    <div class="container mt-5" dir="rtl">
+    <div class="">
+    <div class="">
+    <div class="d-flex justify-content-center">
+        <div class="row w-sm-75 w-100">
+            <div class="col-xs-12 col-md-3 d-flex justify-content-center">
+                <div>
+                    {% if book.cover %}
+                        <img src="{{ book.cover.url }}" class="img-fluid rounded-start shadow" alt="...">
+                    {% else %}
+                        <img src="/media/covers/no_cover.jpeg" class="img-fluid rounded-start shadow" alt="...">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 text-center text-md-end mt-md-1 mt-4">
+                <a action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <h1>حذف کتاب :</h1>
+                    <h3>{{ book.title }}</h3>
+                    <p>آیا از حذف "{{ book.title }}" مطمین هستید؟</p>
+                    <button type="submit" class="btn btn-danger"> بله</button>
+                    <a href="{% url 'book_detail' book.id %}"><button class="btn btn-info">انصراف</button></a>
+                </form>
+            </div>
+            <div class="col-xs-12 col-md-3 d-flex flex-column">
+                <h3 class="align-self-center pt-2 text-muted align-self-md-end">
+                    {{ book.price }}
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
 {% endblock %}
 
