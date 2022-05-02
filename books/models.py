@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Book(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     content = models.TextField()
