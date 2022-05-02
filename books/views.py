@@ -20,7 +20,7 @@ def book_detail_view(request, pk):
     book = get_object_or_404(Book, pk=pk)
     # get comment
     book_comments = book.comments.all()
-    return render(request, 'books/book_detail.html' , {'book':book},{'comments':book_comments})
+    return render(request, 'books/book_detail.html', {'book': book}, {'comments': book_comments})
 
 
 class BookCreateView(generic.CreateView):
